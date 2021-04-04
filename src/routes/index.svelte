@@ -29,22 +29,21 @@
 		'🛳🧊': 'titanic'
 	};
 
-	let guess;
+	let guess = '';
 	let answer = undefined;
-	$: emoji = random_emoji(answer);
+	let emoji = '⚡️👦🔨';
 
 	function random_emoji() {
-		guess = ''
-
-		if (answer === false) {
-			return emoji;
-		}
 		const keys = Object.keys(movies);
 		return keys[Math.floor(Math.random() * keys.length)];
 	}
 
 	function submit_guess() {
 		answer = guess.toLowerCase().trim() === movies[emoji];
+		if (answer === true) {
+			guess = '';
+			emoji = random_emoji();
+		}
 	}
 </script>
 
